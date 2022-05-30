@@ -11,11 +11,11 @@ public class atm_code {
         int balance = 1500;
         int select;
 
-        while(right>0){
-            System.out.print("Username : ");
+        do{
+            System.out.println("Username : ");
             username= input.nextLine();
 
-            System.out.print("Password : ");
+            System.out.println("Password : ");
             password= input.nextLine();
 
             if(username.equals("patika") && password.equals("dev123")){
@@ -30,29 +30,49 @@ public class atm_code {
                         System.out.print("Yatirilacak para miktarini giriniz : ");
                         int miktar = input.nextInt();
                         balance+=miktar;
-                        System.out.print("Yeni toplam para:"+balance);
+                        System.out.println("Yeni toplam para:"+balance);
                         break;
 
                     case 2 :
+                        System.out.print("Cekmek istediginiz para miktarini giriniz :");
+                        int cmiktar= input.nextInt();
+                        if(cmiktar>balance){
+                            System.out.println("Bakiyeniz yetersiz!!!");
+                        }else {
+                            balance -= cmiktar;
+                            System.out.println("Kalan bakiye:"+balance);
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("Bakiyeniz : "+balance);
+                        break;
+
+                    case 4 :
+                        System.out.println("Gorusmek uzere : ");
+                        break;
+
+                    default:
+                        System.out.println("Tekrar deneyiniz...");
 
 
                 }
 
 
 
+            }else{
+                right--;
+
+                System.out.println("Hatali kullanici adi veya sifre...");
+                if(right==0){
+                    System.out.println("Hesabiniz bloke olmustur...");
+                }else {
+                    System.out.println("Kalan hak : "+right);
+                }
+
             }
 
-
-
-
-
-
-
-
-
-        }
-
-
+        }while(right>0);
 
     }
 
